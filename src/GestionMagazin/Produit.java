@@ -1,4 +1,5 @@
 package GestionMagazin;
+import java.util.Scanner;
 
 public class Produit {
 	
@@ -7,8 +8,11 @@ public class Produit {
 	private String marque;
 	private float prix;
 
-	public Produit() {
-		
+	public Produit(int identifiant, String libelle, String marque, float prix) {
+		this.identifiant=identifiant;
+		this.libelle=libelle;
+		this.marque=marque;
+		this.prix=prix;
 	}
 
 	public int getIdentifiant() {
@@ -43,16 +47,35 @@ public class Produit {
 		this.prix = prix;
 	}
 
+	public void SaisirProduit() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("donner identifiant du produit :");
+		this.identifiant=sc.nextInt();
+		
+		System.out.println("donner le libelle du produit:");
+		this.libelle=sc.nextLine();
+		
+		System.out.println("donner la marque du produit :");
+		this.marque=sc.nextLine();
+		
+		
+		
+		System.out.println("donner le prix :");
+		this.prix=sc.nextFloat();
+		sc.close();
+	}
 	
+	
+	public void AfficherProduit() {
+		
+		System.out.println("id :"+this.identifiant);
+		System.out.println("nom :"+this.libelle);
+		System.out.println("prenom :"+this.marque);		
+		System.out.println("lieunaiss :"+this.prix);
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

@@ -1,14 +1,20 @@
 package GestionMagazin;
 
-public class Magasin {
+public class Magasin{
 	
 	private int identifiant;
 	private String adresse;
 	private float capacite;
-	private Produit listeproduits;
+	private Listeproduit Listeproduit;
 	
-	public Magasin() {
+	public Magasin(int identifiant,String adresse,float capacite,Listeproduit listeproduit) throws Produitexception{
 		
+		controlerNombreProduit(listeproduit);
+		
+		this.identifiant=identifiant;
+		this.adresse=adresse;
+		this.capacite=capacite;
+		this.Listeproduit=listeproduit;
 	}
 
 	public int getIdentifiant() {
@@ -41,18 +47,31 @@ public class Magasin {
 	}
 
 
-	public Produit getlisteproduits() {
-		return listeproduits;
+	public Listeproduit getlisteproduits() {
+		return Listeproduit;
 	}
 
-	public void setlisteproduits(Produit listeproduits) {
-		this.listeproduits = listeproduits;
+	public void setlisteproduits(Listeproduit Listeproduit) {
+		this.Listeproduit = Listeproduit;
 	}
 
-
+	public static void controlerNombreProduit(Listeproduit Listeproduit) throws Produitexception{
+		int nombreProduits=0;
+		Listeproduit temp = Listeproduit;
+			while(temp != null) {
+				nombreProduits+=1;
+				temp=temp.suivant;
+			}
+			if(nombreProduits>=5) {
+				throw new Produitexception("impossible, maximum nbre de produits est 5 !");
+			}
+		
+			
+		
+	}
 	
 	
 
-	
+			
 
 }
