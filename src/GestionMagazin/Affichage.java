@@ -2,7 +2,7 @@ package GestionMagazin;
 
 public class Affichage {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Produitexception {
 
 		Produit p1 = new Produit(1,"viande","allemange",400);
 		Produit p2= new Produit(1,"poisson","maroc",800);
@@ -31,10 +31,32 @@ public class Affichage {
 		lp1 = Listeproduit.ajouterDebut(lp1,lp3);
 		lp1 = Listeproduit.ajouterDebut(lp1,lp4);
 		lp1 = Listeproduit.ajouterDebut(lp1,lp5);
-		lp1 = Listeproduit.ajouterDebut(lp1,lp6);
-		lp1 = Listeproduit.ajouterDebut(lp1,lp7);
-	
+		
+//		lp1 = Listeproduit.ajouterDebut(lp1,lp7);
+		
+		
+		try {
+			Magasin m1 = new Magasin(1,"r7-3",300,lp1);
+			m1.afficherMagsin();
+		}
+		catch(Produitexception e) {
+			System.out.println("impossible, maximum nbre de produits est 5 !");
+		}	
+		
+		try {
+			lp1 = Listeproduit.ajouterDebut(lp1,lp6);
+			}
+		catch(Produitexception w) {
+			
+			System.out.println("impossible, maximum nbre de produits est 5 !");
+			
+		}	
+		
+		
+		
+		
+		
+		
 		
 	}
-
 }

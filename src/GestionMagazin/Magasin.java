@@ -62,12 +62,19 @@ public class Magasin{
 				nombreProduits+=1;
 				temp=temp.suivant;
 			}
-			if(nombreProduits>=5) {
+			if(nombreProduits>5) {
 				throw new Produitexception("impossible, maximum nbre de produits est 5 !");
 			}
 		
-			
+	}
+	void afficherMagsin() {
 		
+		System.out.println("\nl''identifiant est : "+this.identifiant);
+		System.out.println("\nl''adresse est : "+this.adresse);
+		System.out.println("\nla capacite est : "+this.capacite);
+		System.out.println("\n---Liste des produits---");
+		System.out.println("\nles produit sont : \n");
+		Listeproduit.affichage(Listeproduit);
 	}
 	
 	

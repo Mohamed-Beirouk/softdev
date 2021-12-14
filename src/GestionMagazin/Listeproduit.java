@@ -26,15 +26,20 @@ public class Listeproduit {
 		this.suivant = suivant;
 	}
 	
-	static Listeproduit ajouterDebut(Listeproduit lp, Listeproduit nv) {
+	static Listeproduit ajouterDebut(Listeproduit lp, Listeproduit nv) throws Produitexception{
+		Magasin.controlerNombreProduit(lp);
 		nv.suivant=lp;
 		lp=nv;
 		return lp;
 	}
 	static void affichage(Listeproduit lp) {
+		
 		Listeproduit temp = lp;
 		while(temp != null) {
-			System.out.println(" \n"+temp.produit);
+			System.out.println("\n identifiant : " +temp.produit.getIdentifiant()+
+					" libelle : " +temp.produit.getLibelle()+" marque : " +temp.produit.getMarque()+ 
+					" prix : "+temp.produit.getPrix());
+			
 			temp=temp.suivant;
 		}
 	}
