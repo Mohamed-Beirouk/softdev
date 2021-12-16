@@ -27,10 +27,28 @@ public class Listeproduit {
 	}
 	
 	static Listeproduit ajouterDebut(Listeproduit lp, Listeproduit nv) throws Produitexception{
-		Magasin.controlerNombreProduit(lp);
-		nv.suivant=lp;
-		lp=nv;
-		return lp;
+		if(lp==null) {
+			lp=nv;
+			return lp;
+		}
+		Listeproduit temp = lp;
+		int c = 0;
+		while(temp!=null)
+		{
+			if(temp.produit.getIdentifiant()==nv.produit.getIdentifiant()) {
+				System.out.println("produit existe deja");
+				c=c+1;
+			}
+			temp=temp.suivant;
+		}
+		if(c!=0) {
+			return lp;
+		}
+			nv.suivant=lp;
+			lp=nv;
+			return lp;
+		
+	
 	}
 	static void affichage(Listeproduit lp) {
 		
@@ -44,5 +62,22 @@ public class Listeproduit {
 		}
 	}
 	
-
+	public int NbrProd(Listeproduit l){
+		Listeproduit temp = l;
+		int compteur=0;
+		while(temp!=null) {
+			compteur++;
+			temp = temp.suivant;
+		}
+		return compteur;
+	}
+	static Listeproduit supprimerproduit(Produit p, Listeproduit lp) {
+		if(lp.produit == p) {
+			return lp.suivant;
+		}
+		return new Listeproduit(lp.produit, supprimerproduit(p, lp.suivant));
+		
+	
+	
+	}
 }
